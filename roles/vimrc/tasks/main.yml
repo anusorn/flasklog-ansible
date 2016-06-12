@@ -1,0 +1,5 @@
+- name: Bootstrap | Vim | Push vimrc for user '$user'
+  template:
+    src=vimrc.j2
+    dest=~/.vimrc
+  sudo: no

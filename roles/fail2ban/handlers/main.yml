@@ -1,0 +1,4 @@
+---
+### Handlers for Role: fail2ban
+- name: restart fail2ban
+  action: service name=fail2ban state=restarted

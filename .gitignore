@@ -1,0 +1,8 @@
+*.swp
+.DS_Store
+db/myapp.db
+myapp.cfg
+*.pyc
+__pycache__
+build
+.envrc

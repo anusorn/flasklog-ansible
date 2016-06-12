@@ -1,0 +1,12 @@
+- name: Bootstrap | Screen | Push screerc for user $HOME
+  template:
+    src=screenrc.j2
+    dest=~/.screenrc
+  sudo: no
+
+- name: add screen's config to .bash_profile
+  lineinfile: 'dest=~/.bashrc line="{{ item }}"'
+  with_items:
+    - "[ ${STY} ] || screen -rx || screen -D -RR"
+  sudo: no
+

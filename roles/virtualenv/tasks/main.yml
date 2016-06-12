@@ -1,0 +1,18 @@
+- name: create folders for virtualenv
+  raw: mkdir -p ~/.virtualenvs
+  sudo: no
+
+- name: add virtualenvwrapper exports to .bash_profile
+  lineinfile: >
+    dest=~/.bashrc line="{{ item }}"
+  with_items:
+    - export WORKON_HOME=$HOME/.virtualenvs
+    - export VIRTUALENVWRAPPER_PYTHON=`which python`
+    - source /usr/local/bin/virtualenvwrapper.sh
+  sudo: no
+
+# - name: source the new .bashrc
+  # raw: source ~/.bashrc
+  # sudo: no
+
+

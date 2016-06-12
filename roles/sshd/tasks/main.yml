@@ -1,0 +1,13 @@
+- name: PermitRootLogin no
+  lineinfile: >
+    line='PermitRootLogin no'
+    regexp='^PermitRootLogin'
+    dest=/etc/ssh/sshd_config
+  notify: restart ssh
+
+- name: PasswordAuthentication no
+  lineinfile: >
+    line='PasswordAuthentication no'
+    regexp='^PasswordAuthentication'
+    dest=/etc/ssh/sshd_config
+  notify: restart ssh

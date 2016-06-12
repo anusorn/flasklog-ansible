@@ -1,0 +1,44 @@
+- name: Install iptables-persistent
+  apt: name={{ item }} state=latest
+  with_items:
+    - iptables-persistent
+
+- name: Flush iptables the first time
+  command: iptables -F
+
+
+- name: Allow input icmp traffic
+  command: iptables -A INPUT -p icmp -j ACCEPT
+
+
+- name: Allow localhost traffic
+  command: iptables -A INPUT -i lo -j ACCEPT
+
+
+- name: Allow input SSH traffic from port 22
+  command: iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+
+
+- name: Allow input http traffic from port 5000
+  command: iptables -A INPUT -p tcp --dport 5000 -j ACCEPT
+
+
+- name: Allow existing traffic (INPUT)
+  command: iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+
+- name: Drop all other input traffic
+  command: iptables -P INPUT DROP
+
+
+- name: Drop all other forward traffic
+  command: iptables -P FORWARD DROP
+
+
+- name: Allow all other output traffic
+  command: iptables -P OUTPUT ACCEPT
+
+
+# Save iptable rules into /etc/iptables/rules.v4
+- name: Save new iptables rules in config files
+  command: /etc/init.d/iptables-persistent save

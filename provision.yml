@@ -1,0 +1,14 @@
+- hosts: default
+  user: aoshiman
+  sudo: yes
+  roles:
+  - sshd
+  - timezone-ja
+  - locale-ja
+  - iptables
+  - fail2ban
+  - python3-setup
+  - virtualenv
+  - vimrc
+  - screenrc
+  - set-blog
