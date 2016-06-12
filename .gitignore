@@ -6,3 +6,4 @@ myapp.cfg
 __pycache__
 build
 .envrc
+.vagrant
