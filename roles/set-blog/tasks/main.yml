@@ -2,7 +2,7 @@
   template:
     src=config.j2
     dest=~/.ssh/config
-  sudo: no
+  become: no
 
 - name: Install Git
   apt: name={{ item }} state=latest update_cache=yes
@@ -12,7 +12,7 @@
 - name: Configure Git
   template: src=gitconfig.j2
             dest=~/.gitconfig
-  sudo: no
+  become: no
 
 # - name: Send key to remote deploy user
   # copy: src=~/.ssh/bitbucket.org/id_rsa.bitbucket.org
@@ -27,20 +27,20 @@
        dest=~/project/flasklog
        version=master
        accept_hostkey=yes
-  sudo: no
+  become: no
 
 
 - name: Run mkvirtualenv
   shell: >
         /bin/bash -lc "source /usr/local/bin/virtualenvwrapper.sh
         && mkvirtualenv -p `which python3` flasklog"
-  sudo: no
+  become: no
 
 - name: Activate virtualenv and pip install -r requirements.txt
   shell: >
         /bin/bash -lc "source ~/.virtualenvs/flasklog/bin/activate
         && pip install -r ~/project/flasklog/requirements.txt"
-  sudo: no
+  become: no
 
 - name: Start Flasklog
   shell: >
@@ -49,4 +49,4 @@
         && ~/.virtualenvs/flasklog/bin/python3 ./manage.py runserver &"
   async: True
   poll: 0
-  sudo: no
+  become: no

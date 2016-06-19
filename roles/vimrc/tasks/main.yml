@@ -2,4 +2,4 @@
   template:
     src=vimrc.j2
     dest=~/.vimrc
-  sudo: no
+  become: no

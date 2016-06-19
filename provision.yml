@@ -1,6 +1,6 @@
 - hosts: default
   user: aoshiman
-  sudo: yes
+  become: yes
   roles:
   - sshd
   - timezone-ja
