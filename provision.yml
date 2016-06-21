@@ -1,6 +1,7 @@
 - hosts: default
   user: aoshiman
   become: yes
+  gather_facts: no
   roles:
   - sshd
   - timezone-ja
