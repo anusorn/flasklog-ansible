@@ -14,14 +14,6 @@
             dest=~/.gitconfig
   become: no
 
-# - name: Send key to remote deploy user
-  # copy: src=~/.ssh/bitbucket.org/id_rsa.bitbucket.org
-        # dest=~/.ssh/id_rsa.bitbucket.org
-        # mode=0600
-        # owner=aoshiman
-        # group=aoshiman
-  # sudo: no
-
 - name: Git clone from bitbucket
   git: repo=git@bitbucket.org:aoshiman/flasklog.git
        dest=~/project/flasklog

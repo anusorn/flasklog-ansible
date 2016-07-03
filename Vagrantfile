@@ -20,9 +20,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     provider.ssh_key_name = ENV["DIGITALOCEAN_SSH_KEY_NAME"]
   end
 
-  # config.vm.provision :ansible do |ansible|
-    # ansible.playbook = "provision.yml"
-    # ansible.verbose = "VV"
-  # end
+  config.vm.provision :ansible do |ansible|
+    ansible.playbook = "provision.yml"
+    ansible.verbose = "VV"
+  end
 
 end
