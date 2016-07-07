@@ -39,6 +39,6 @@
         /bin/bash -lc "source ~/.virtualenvs/flasklog/bin/activate
         && cd ~/project/flasklog
         && ~/.virtualenvs/flasklog/bin/python3 ./manage.py runserver &"
-  async: True
+  async: 10
   poll: 0
   become: no
